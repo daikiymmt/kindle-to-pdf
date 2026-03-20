@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Kindle to PDF",
+  "version": "1.1.0",
+  "description": "Kindle Cloud Readerのページを自動スクショしてPDF化する拡張機能",
+  "permissions": [
+    "activeTab",
+    "debugger",
+    "unlimitedStorage"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}
