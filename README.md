@@ -26,11 +26,11 @@ A Chrome extension that automatically captures pages from Kindle Cloud Reader an
 2. Navigate to the page where you want to start capturing
 3. Click the extension icon to open the popup
 4. Configure the settings:
-   - **キャプチャ枚数** — Number of pages to capture (auto-stops at end of book)
-   - **最大待機時間 (ms)** — Max wait time for page load (default: 2000ms)
-   - **PDF分割単位 (ページ)** — Pages per PDF file (default: 50)
-5. Click **キャプチャ開始** to start capturing
-6. Once complete, click **PDF ダウンロード** to generate and download PDFs
+   - **Capture count** — Number of pages to capture (auto-stops at end of book)
+   - **Max wait time (ms)** — Max wait time for page load (default: 2000ms)
+   - **PDF split size (pages)** — Pages per PDF file (default: 50)
+5. Click **Start Capture** to start capturing
+6. Once complete, click **PDF Download** to generate and download PDFs
 
 ## Permissions
 
