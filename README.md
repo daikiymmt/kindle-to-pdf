@@ -1,54 +1,52 @@
 # Kindle to PDF
 
-Kindle Cloud Reader のページを自動スクリーンショットして PDF 化する Chrome 拡張機能。
+A Chrome extension that automatically captures pages from Kindle Cloud Reader and converts them into PDF files.
 
-## 機能
+## Features
 
-- Kindle Cloud Reader の各ページを自動でキャプチャ
-- キャプチャした画像を PDF にまとめてダウンロード
-- 大量ページ対応（IndexedDB による画像永続化）
-- PDF 分割出力（指定ページ数ごとにファイル分割）
-- 本の末尾を自動検知して正常終了
-- プログレスバーによる進捗表示
+- Automatic page-by-page screenshot capture from Kindle Cloud Reader
+- PDF generation from captured images with split file support
+- Persistent image storage via IndexedDB (survives service worker termination)
+- Auto-detection of end-of-book (stops gracefully when no more pages)
+- Real-time progress bar during capture and PDF generation
 
-## インストール
+## Installation
 
-1. このリポジトリをクローンまたはダウンロード
+1. Clone or download this repository
    ```
    git clone https://github.com/daikiymmt/kindle-to-pdf.git
    ```
-2. Chrome で `chrome://extensions` を開く
-3. 右上の「デベロッパーモード」を有効にする
-4. 「パッケージ化されていない拡張機能を読み込む」をクリック
-5. クローンしたフォルダを選択
+2. Open `chrome://extensions` in Chrome
+3. Enable **Developer mode** (top right)
+4. Click **Load unpacked** and select the cloned folder
 
-## 使い方
+## Usage
 
-1. [Kindle Cloud Reader](https://read.amazon.co.jp/) で本を開く
-2. キャプチャを開始したいページを表示する
-3. 拡張機能アイコンをクリックしてポップアップを開く
-4. 設定を入力する
-   - **キャプチャ枚数** — 取得するページ数（本の末尾に達した場合は自動で停止）
-   - **最大待機時間 (ms)** — ページ読み込みの最大待機時間（デフォルト: 2000ms）
-   - **PDF分割単位 (ページ)** — 1ファイルあたりのページ数（デフォルト: 50）
-5. 「キャプチャ開始」をクリック
-6. 完了後「PDF ダウンロード」をクリック
+1. Open a book on [Kindle Cloud Reader](https://read.amazon.co.jp/)
+2. Navigate to the page where you want to start capturing
+3. Click the extension icon to open the popup
+4. Configure the settings:
+   - **キャプチャ枚数** — Number of pages to capture (auto-stops at end of book)
+   - **最大待機時間 (ms)** — Max wait time for page load (default: 2000ms)
+   - **PDF分割単位 (ページ)** — Pages per PDF file (default: 50)
+5. Click **キャプチャ開始** to start capturing
+6. Once complete, click **PDF ダウンロード** to generate and download PDFs
 
-## 必要な権限
+## Permissions
 
-| 権限 | 用途 |
+| Permission | Purpose |
 |---|---|
-| `activeTab` | 表示中のタブのスクリーンショット取得 |
-| `debugger` | ページ送りのキー入力送信・ネットワーク監視 |
-| `unlimitedStorage` | 大量のキャプチャ画像を IndexedDB に保存 |
+| `activeTab` | Capture screenshots of the visible tab |
+| `debugger` | Send key events for page navigation and monitor network activity |
+| `unlimitedStorage` | Store large volumes of captured images in IndexedDB |
 
-## 技術構成
+## Technical Details
 
 - **Manifest V3** Chrome Extension
-- **IndexedDB** — キャプチャ画像の永続化（Service Worker 終了によるデータ消失を防止）
-- **Chrome Debugger Protocol** — ネットワークアイドル検知・キー入力
-- **jsPDF** — クライアントサイドでの PDF 生成
+- **IndexedDB** for persistent image storage (prevents data loss on service worker termination)
+- **Chrome Debugger Protocol** for network idle detection and key input dispatch
+- **jsPDF** for client-side PDF generation
 
-## ライセンス
+## License
 
 MIT
